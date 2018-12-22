@@ -17,6 +17,18 @@ h1 {
     color: #fff;
     text-align: center;
 }
-span {
-    color: #fff;
+span#score {
+    color: #000;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+#message {
+    color: black;
+}
+#stripe {
+    background-color: #fff;
+    height: 45px;
+    text-align: center;
 }

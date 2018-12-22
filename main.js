@@ -6,9 +6,39 @@ let pickedColor = pickColor();
 let colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.textContent = pickedColor;
 //Display Message
-let displayMessage = document.getElementById("message")
+let displayMessage = document.getElementById("message");
+//Select h1
+let h1 = document.querySelector("h1");
+//Select the reset button
+let resetBtn = document.getElementById("reset");
 
-//Loop through square and assign colo
+resetBtn.addEventListener("click", function(){
+    console.log("hello");
+    // //generate new colors
+     colors = generateRandonColors(6);
+    
+    // //Pick new arrays of colors
+    pickedColor = pickColor();
+
+    // //Change display color to match picked color
+    colorDisplay.textContent = pickedColor;
+    //Reflect the color on the square
+    for(let i = 0; i < square.length; i++){
+        square[i].style.backgroundColor = colors[i];
+
+        h1.style.backgroundColor = "#232323";
+    }
+    //colorr();
+
+});
+//Function to display color
+// function colorr(){
+//     for(let i = 0; i < square.length; i++){
+//         square[i].style.backgroundColor = colors[i];
+//     }
+// }
+
+//Loop through square and assign color
  for(let i = 0; i < square.length; i++){
      //Add colors to square
      square[i].style.backgroundColor = colors[i];
@@ -19,8 +49,10 @@ let displayMessage = document.getElementById("message")
         //Compare clickedColor to PickedColor
         if (clickedColor === pickedColor){
             changeColor(clickedColor);
-            countScore();
+            h1.style.backgroundColor = pickedColor;
+            //countScore();
             displayMessage.textContent = "Bravo!!"
+            resetBtn.textContent = "Play Again?"
             
         }else{
             this.style.backgroundColor = "#232323" ;
@@ -33,12 +65,11 @@ let displayMessage = document.getElementById("message")
       function changeColor(color){
           //loop through square
 
-          for(let i = 0; i < square
-            .length; i++){
+          for(let i = 0; i < square.length; i++){
               square
               [i].style.backgroundColor = color;
           }
-
+        //colorr();
       }
 
       //Score Function
@@ -82,5 +113,5 @@ let displayMessage = document.getElementById("message")
         let g = Math.floor(Math.random() * 256);
         //Pick Blue from 255
         let b = Math.floor(Math.random() * 256);
-        return "rgb(" + r + "," + g +"," + b + ")";
+        return "rgb(" + r + ", " + g +", " + b + ")";
     }
