@@ -1,11 +1,4 @@
-let colors = [
-    "rgb(255, 0, 0)",
-    "rgb(255, 225, 0)",
-    "rgb(0, 225, 0)",
-    "rgb(0, 255, 255)",
-    "rgb(255, 0, 255)",
-    "rgb(0 0, 255)"
-]
+let colors = generateRandonColors(6);
 //Selecting each square to have a different color
 let square = document.querySelectorAll(".shape");
 //Selecting picked color
@@ -15,8 +8,7 @@ colorDisplay.textContent = pickedColor;
 //Display Message
 let displayMessage = document.getElementById("message")
 
-//Loop through square and assign color
-
+//Loop through square and assign colo
  for(let i = 0; i < square.length; i++){
      //Add colors to square
      square[i].style.backgroundColor = colors[i];
@@ -36,6 +28,7 @@ let displayMessage = document.getElementById("message")
         }
      });
       }
+
       //Change color if correct
       function changeColor(color){
           //loop through square
@@ -47,21 +40,47 @@ let displayMessage = document.getElementById("message")
           }
 
       }
+
       //Score Function
-      let scoreDisplay = document.getElementById("score")
-      function countScore(){
-          let point =0;
-        if (clickedColor = pickedColor){
-           point++;
+    //   let scoreDisplay = document.getElementById("score");
+    //   function countScore(){
+    //       let point =0;
+    //     if (clickedColor = pickedColor){
+    //        point++;
 
-      }else{
-          point = point;
-      }
-      scoreDisplay.textContent = point;
+    //   }else{
+    //       point = point;
+    //   }
+    //   scoreDisplay.textContent = point;
 
-    }
+    // }
+
     //Picked RandomColor
     function pickColor(){
         let random =Math.floor(Math.random() * colors.length);
         return colors[random];
+    }
+
+    //To Generate Randoma array of colors
+    function generateRandonColors(num){
+        //make an empty array
+        let arr = []
+        //repeat num times
+        for(let i = 0; i < num; i++){
+            //get random color and push into arr
+           arr.push(randomColor());
+        }
+        //return that array 
+        return arr;
+    }
+    
+    //Generating Random Color
+    function randomColor(){
+        //Pick Red from 255
+       let r = Math.floor(Math.random() * 256);
+        //Pick Green from 255
+        let g = Math.floor(Math.random() * 256);
+        //Pick Blue from 255
+        let b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + "," + g +"," + b + ")";
     }
