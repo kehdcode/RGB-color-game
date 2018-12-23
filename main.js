@@ -1,4 +1,8 @@
-let colors = generateRandonColors(6);
+let numOfSquare = 6;
+let attempts = 5;
+let at = document.getElementById("attempt");
+
+let colors = generateRandonColors(numOfSquare);
 //Selecting each square to have a different color
 let square = document.querySelectorAll(".shape");
 //Selecting picked color
@@ -15,24 +19,47 @@ let resetBtn = document.getElementById("reset");
 let easyBtn = document.getElementById("easyBtn");
 let hardBtn = document.getElementById("hardBtn");
 
+//Easy Mode
 easyBtn.addEventListener("click", function(){
     this.classList.add("selected");
     hardBtn.classList.remove("selected");
+     numOfSquare = 3
+    colors = generateRandonColors(numOfSquare);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    //To hide the bottom three square
+    for (let i = 0; i < square.length; i++){
+        if(colors[i]){
+            square[i].style.backgroundColor = colors[i];
+        }else{
+            square[i].style.display = "none";
+        }
+    }
     
 });
+
+//Hard Mode
 hardBtn.addEventListener("click", function(){
     this.classList.add("selected");
     easyBtn.classList.remove("selected");
+     numOfSquare = 6;
+    colors = generateRandonColors(numOfSquare);
+    pickedColor = pickColor();
+    colorDisplay.textContent = pickedColor;
+    //To hide the bottom three square
+    for (let i = 0; i < square.length; i++){
+       
+            square[i].style.backgroundColor = colors[i];        
+            square[i].style.display = "block";
+        }
     
-})
-
-
+});
 
 
 resetBtn.addEventListener("click", function(){
   
     // //generate new colors
-     colors = generateRandonColors(6);
+     colors = generateRandonColors(numOfSquare);
     
     // //Pick new arrays of colors
     pickedColor = pickColor();
@@ -44,6 +71,7 @@ resetBtn.addEventListener("click", function(){
         square[i].style.backgroundColor = colors[i];
 
         h1.style.backgroundColor = "#232323";
+        displayMessage.textContent = ""
     }
     //colorr();
 
@@ -61,8 +89,10 @@ resetBtn.addEventListener("click", function(){
      square[i].style.backgroundColor = colors[i];
      //Add a click event to each square
      square[i].addEventListener("click", function(){
+        
         //Grab color of clicked square
         let clickedColor = this.style.backgroundColor;
+        
         //Compare clickedColor to PickedColor
         if (clickedColor === pickedColor){
             changeColor(clickedColor);
