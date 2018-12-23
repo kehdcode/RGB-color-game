@@ -11,9 +11,26 @@ let displayMessage = document.getElementById("message");
 let h1 = document.querySelector("h1");
 //Select the reset button
 let resetBtn = document.getElementById("reset");
+//Select the buttons
+let easyBtn = document.getElementById("easyBtn");
+let hardBtn = document.getElementById("hardBtn");
+
+easyBtn.addEventListener("click", function(){
+    this.classList.add("selected");
+    hardBtn.classList.remove("selected");
+    
+});
+hardBtn.addEventListener("click", function(){
+    this.classList.add("selected");
+    easyBtn.classList.remove("selected");
+    
+})
+
+
+
 
 resetBtn.addEventListener("click", function(){
-    console.log("hello");
+  
     // //generate new colors
      colors = generateRandonColors(6);
     

@@ -18,17 +18,22 @@ h1 {
     text-align: center;
 }
 span#score {
-    color: #000;
+    color: #fff;
     font-weight: bold;
     font-size: 20px;
 
 }
 
 #message {
-    color: black;
+    color: #000;
+    font-size: 20px;
+
 }
 #stripe {
     background-color: #fff;
     height: 45px;
     text-align: center;
+}
+.selected {
+    background-color: blue;
 }
